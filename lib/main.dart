@@ -3,6 +3,7 @@ import 'package:flutter_profile/components/profile_buttons.dart';
 import 'package:flutter_profile/components/profile_count_info.dart';
 import 'package:flutter_profile/components/profile_header.dart';
 import 'package:flutter_profile/components/profile_tab.dart';
+import 'package:flutter_profile/hello_page.dart';
 import 'package:flutter_profile/theme.dart';
 
 import 'components/profile_drawer.dart';
@@ -41,7 +42,7 @@ class profilePage extends StatelessWidget {
           SizedBox(height: 15,),
           profileButtons(),
           SizedBox(height: 15,),
-          ProfileTab(),
+          Expanded(child: ProfileTap()),
         ],
       ),
     );
