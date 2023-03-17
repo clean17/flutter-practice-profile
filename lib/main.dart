@@ -33,17 +33,26 @@ class profilePage extends StatelessWidget {
     return Scaffold(
       appBar: _appBar(), // 언더스코어가 붙어 있으면 private 으로 만든거임 !!  자기 패키지에서만 찾을수 있음
       endDrawer: profileDrawer(),
-      body: Column(
-        children: [
-          SizedBox(height: 20,),
-          SizedBox(width: 20,),
-          profileHeader(),
-          profileCountInfo(),
-          SizedBox(height: 15,),
-          profileButtons(),
-          SizedBox(height: 15,),
-          Expanded(child: ProfileTap()),
-        ],
+      body: NestedScrollView( // 리스트 안에 동적인 리스트가 있을때 사용
+        body: ProfileTap(), // 동적인 리스트
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  SizedBox(height: 20,),
+                  SizedBox(width: 20,),
+                  profileHeader(),
+                  profileCountInfo(),
+                  SizedBox(height: 15,),
+                  profileButtons(),
+                  SizedBox(height: 15,)
+                  // Expanded(child: ProfileTap()),
+                ],
+              ),
+            ),
+          ];
+        },
       ),
     );
   }
